@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A private notes app powered by Supabase.">
+  <title>Notes | Supabase Notes</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <main class="page">
+    <header class="site-header">
+      <a class="brand" href="./">Notes<span>.</span></a>
+      <p class="header-caption">A quiet place for your thoughts</p>
+    </header>
+
+    <div id="message" class="message" role="status" aria-live="polite" hidden></div>
+
+    <section id="auth-panel" class="auth-panel" aria-labelledby="welcome-title">
+      <div class="intro">
+        <p class="eyebrow">Your personal notebook</p>
+        <h1 id="welcome-title">Make room for a thought.</h1>
+        <p>Sign in to keep your notes private and available wherever you are.</p>
+      </div>
+
+      <div class="auth-grid">
+        <form id="signup-form" class="card form-card">
+          <h2>Create account</h2>
+          <label for="signup-email">Email</label>
+          <input id="signup-email" name="email" type="email" autocomplete="email" required>
+          <label for="signup-password">Password</label>
+          <input id="signup-password" name="password" type="password" autocomplete="new-password" minlength="8" required>
+          <button type="submit">Create account</button>
+        </form>
+
+        <form id="login-form" class="card form-card">
+          <h2>Welcome back</h2>
+          <label for="login-email">Email</label>
+          <input id="login-email" name="email" type="email" autocomplete="email" required>
+          <label for="login-password">Password</label>
+          <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+          <button type="submit">Log in</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="notes-panel" class="notes-panel" aria-labelledby="notes-title" hidden>
+      <div class="notes-heading">
+        <div>
+          <p class="eyebrow">Your notebook</p>
+          <h1 id="notes-title">Your notes</h1>
+          <p id="signed-in-as" class="muted"></p>
+        </div>
+        <button id="logout-button" class="button-secondary" type="button">Log out</button>
+      </div>
+
+      <form id="note-form" class="card note-form">
+        <h2 id="note-form-title">Write a note</h2>
+        <label for="note-title">Title</label>
+        <input id="note-title" name="title" maxlength="160" required>
+        <label for="note-content">Your note</label>
+        <textarea id="note-content" name="content" rows="5" placeholder="Start wherever you are…"></textarea>
+        <div class="form-actions">
+          <button id="save-note-button" type="submit">Save note</button>
+          <button id="cancel-edit-button" class="button-secondary" type="button" hidden>Cancel edit</button>
+        </div>
+      </form>
+
+      <div class="list-heading">
+        <h2>Saved notes</h2>
+        <span id="note-count" class="muted"></span>
+      </div>
+      <div id="note-list" class="note-list"></div>
+      <p id="empty-state" class="empty-state" hidden>No notes yet. Add one above when you’re ready.</p>
+    </section>
+  </main>
+</body>
+</html>
